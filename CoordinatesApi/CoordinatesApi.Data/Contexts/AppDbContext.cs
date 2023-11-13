@@ -20,6 +20,9 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<Rectangle>()
             .Property(r => r.Id)
             .ValueGeneratedOnAdd();
+
+        modelBuilder.Entity<Rectangle>()
+            .HasIndex(r => new { r.X1, r.Y1, r.X2, r.Y2 });
         
         modelBuilder.Entity<Rectangle>().HasData(SeedHelper.GetSeededRectangles());
     }
