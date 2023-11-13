@@ -11,6 +11,7 @@ public class AppDbContext : DbContext
     }
 
     public DbSet<Rectangle> Rectangles => Set<Rectangle>();
+    public DbSet<User> Users => Set<User>();
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {   
@@ -25,5 +26,16 @@ public class AppDbContext : DbContext
             .HasIndex(r => new { r.X1, r.Y1, r.X2, r.Y2 });
         
         modelBuilder.Entity<Rectangle>().HasData(SeedHelper.GetSeededRectangles());
+        
+        modelBuilder.Entity<User>()
+            .HasKey(r => r.Id);
+
+        modelBuilder.Entity<User>()
+            .Property(r => r.Id)
+            .ValueGeneratedOnAdd();
+        
+        modelBuilder.Entity<User>()
+            .HasIndex(u => u.Login)
+            .IsUnique();
     }
 }

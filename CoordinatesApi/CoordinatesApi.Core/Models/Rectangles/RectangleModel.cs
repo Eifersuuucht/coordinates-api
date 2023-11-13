@@ -1,4 +1,4 @@
-﻿namespace CoordinatesApi.Core.Models;
+﻿namespace CoordinatesApi.Core.Models.Rectangles;
 
 public sealed record RectangleModel(
     int Id,

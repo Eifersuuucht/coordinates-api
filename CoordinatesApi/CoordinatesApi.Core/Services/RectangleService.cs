@@ -1,5 +1,6 @@
 ﻿using System.Collections.Immutable;
 using CoordinatesApi.Core.Models;
+using CoordinatesApi.Core.Models.Rectangles;
 using CoordinatesApi.Data.Entities;
 using CoordinatesApi.Data.Repositories;
 using Microsoft.Extensions.DependencyInjection;

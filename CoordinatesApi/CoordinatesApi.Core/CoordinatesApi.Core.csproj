@@ -12,6 +12,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\CoordinatesApi.Data\CoordinatesApi.Data.csproj" />
+      <ProjectReference Include="..\CoordinatesApi.Shared\CoordinatesApi.Shared.csproj" />
     </ItemGroup>
 
 </Project>

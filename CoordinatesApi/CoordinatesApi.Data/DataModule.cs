@@ -13,6 +13,7 @@ public static class DataModule
             options.UseSqlServer(connectionString));
 
         services.AddScoped<IRectangleRepository, RectangleRepository>();
+        services.AddScoped<IUserRepository, UserRepository>();
 
         return services;
     }

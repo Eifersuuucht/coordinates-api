@@ -1,11 +1,14 @@
 ﻿using System.Collections.Immutable;
 using CoordinatesApi.Core.Models;
+using CoordinatesApi.Core.Models.Rectangles;
 using CoordinatesApi.Core.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoordinatesApi.WebApi.Controllers;
 
 [ApiController]
+[Authorize]
 public class RectangleController : ControllerBase
 {
     private readonly IRectangleService _rectangleService;
