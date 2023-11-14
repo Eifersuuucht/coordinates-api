@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CoordinatesApi.Data.Repositories;
 
-public class RectangleRepository : IRectangleRepository
+public sealed class RectangleRepository : IRectangleRepository
 {
     private readonly AppDbContext _dbContext;
 

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CoordinatesApi.Data.Repositories;
 
-public class UserRepository : IUserRepository
+public sealed class UserRepository : IUserRepository
 {
     private readonly AppDbContext _dbContext;
 

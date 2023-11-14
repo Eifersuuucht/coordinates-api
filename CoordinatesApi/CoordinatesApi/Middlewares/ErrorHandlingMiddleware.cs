@@ -1,8 +1,12 @@
-﻿using CoordinatesApi.WebApi.Models;
+﻿using System;
+using System.Threading.Tasks;
+using CoordinatesApi.WebApi.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 
 namespace CoordinatesApi.WebApi.Middlewares;
 
-public class ErrorHandlingMiddleware
+internal sealed class ErrorHandlingMiddleware
 {
     private readonly RequestDelegate _next;
     private readonly ILogger<ErrorHandlingMiddleware> _logger;

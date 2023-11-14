@@ -1,4 +1,5 @@
-﻿using CoordinatesApi.Core.Models.Auth;
+﻿using System.Threading.Tasks;
+using CoordinatesApi.Core.Models.Auth;
 
 namespace CoordinatesApi.Core.Services;
 

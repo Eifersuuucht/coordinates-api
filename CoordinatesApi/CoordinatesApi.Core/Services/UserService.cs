@@ -1,4 +1,6 @@
-﻿using CoordinatesApi.Core.Models.Auth;
+﻿using System;
+using System.Threading.Tasks;
+using CoordinatesApi.Core.Models.Auth;
 using CoordinatesApi.Data.Entities;
 using CoordinatesApi.Data.Repositories;
 using CoordinatesApi.Shared.Extensions;
@@ -6,7 +8,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace CoordinatesApi.Core.Services;
 
-public class UserService : IUserService
+public sealed class UserService : IUserService
 {
     private readonly IConfiguration _configuration;
     private readonly IUserRepository _userRepository;

@@ -3,24 +3,27 @@ using CoordinatesApi.Data;
 using CoordinatesApi.WebApi.Handlers;
 using CoordinatesApi.WebApi.Middlewares;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddAuthentication("BasicAuthentication")
     .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
 
 builder.Services.AddControllers();
+
 builder.Services.AddCoreModule();
 builder.Services.AddDataModule(builder.Configuration.GetConnectionString("DefaultConnection"));
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
 
-    // Configure Swagger to use basic authentication
     c.AddSecurityDefinition("basic", new OpenApiSecurityScheme
     {
         Name = "Authorization",
@@ -50,7 +53,6 @@ var app = builder.Build();
 
 app.UseMiddleware<ErrorHandlingMiddleware>();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

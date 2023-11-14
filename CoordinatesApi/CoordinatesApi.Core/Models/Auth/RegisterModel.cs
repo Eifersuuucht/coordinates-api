@@ -1,6 +1,6 @@
 ﻿namespace CoordinatesApi.Core.Models.Auth;
 
-public record RegisterModel(
+public sealed record RegisterModel(
     string Login,
     string Password,
     string RepeatPassword);

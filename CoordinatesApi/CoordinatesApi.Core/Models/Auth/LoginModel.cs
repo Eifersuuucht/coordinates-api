@@ -1,5 +1,5 @@
 ﻿namespace CoordinatesApi.Core.Models.Auth;
 
-public record LoginModel(
+public sealed record LoginModel(
     string Login,
     string Password);

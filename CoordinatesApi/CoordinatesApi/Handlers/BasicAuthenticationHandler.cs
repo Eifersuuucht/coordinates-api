@@ -1,15 +1,18 @@
-﻿using System.Net.Http.Headers;
+﻿using System;
+using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Encodings.Web;
+using System.Threading.Tasks;
 using CoordinatesApi.Core.Models.Auth;
 using CoordinatesApi.Core.Services;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace CoordinatesApi.WebApi.Handlers;
 
-public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSchemeOptions>
+internal sealed class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSchemeOptions>
 {
     private readonly IUserService _userService;
 
@@ -32,7 +35,7 @@ public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSc
         try
         {
             var authHeader = AuthenticationHeaderValue.Parse(Request.Headers["Authorization"]);
-            var credentialBytes = Convert.FromBase64String(authHeader.Parameter);
+            var credentialBytes = Convert.FromBase64String(authHeader?.Parameter ?? string.Empty);
             var credentials = Encoding.UTF8.GetString(credentialBytes).Split(':');
             var username = credentials[0];
             var password = credentials[1];

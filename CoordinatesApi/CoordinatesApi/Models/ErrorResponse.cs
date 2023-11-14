@@ -1,6 +1,6 @@
 ﻿namespace CoordinatesApi.WebApi.Models;
 
-public record ErrorResponse(
+internal sealed record ErrorResponse(
     int StatusCode,
     string Message,
     string Details);
